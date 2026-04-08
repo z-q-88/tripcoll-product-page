@@ -1,0 +1,5 @@
+[site]
+bucket = "."
+
+[deployment]
+production_branch = "master"
