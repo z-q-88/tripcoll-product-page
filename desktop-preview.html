@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripcool 迷你冷温小冰箱 - 详情页设计预览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "HarmonyOS Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f0f0f0;
+            line-height: 1.5;
+            color: #1D1D1F;
+        }
+
+        .preview-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+        }
+
+        /* 通用样式 */
+        .section {
+            padding: 120px 60px;
+        }
+
+        .section-gray {
+            background: #F5F5F7;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #1D1D1F;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: #FFFFFF;
+        }
+
+        .hero-product {
+            width: 400px;
+            height: 500px;
+            background: linear-gradient(145deg, #f8f8f8, #e8e8e8);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 48px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+        }
+
+        .hero-product span {
+            color: #86868B;
+            font-size: 18px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1D1D1F;
+        }
+
+        .hero p {
+            font-size: 24px;
+            color: #86868B;
+            margin-bottom: 32px;
+        }
+
+        .hero-temp {
+            font-size: 20px;
+            color: #1D1D1F;
+            background: #F5F5F7;
+            padding: 16px 32px;
+            border-radius: 32px;
+        }
+
+        /* 核心卖点 */
+        .features {
+            background: #F5F5F7;
+        }
+
+        .feature-card {
+            background: #FFFFFF;
+            border-radius: 24px;
+            padding: 48px 32px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            background: #1D1D1F;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .feature-desc {
+            font-size: 15px;
+            color: #86868B;
+        }
+
+        /* 温控技术 */
+        .temperature {
+            background: #FFFFFF;
+        }
+
+        .temp-scale {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            padding: 40px;
+            background: #F5F5F7;
+            border-radius: 24px;
+        }
+
+        .temp-bar {
+            height: 12px;
+            background: linear-gradient(90deg, #007AFF 0%, #5AC8FA 50%, #FF9500 100%);
+            border-radius: 6px;
+            margin: 24px 0;
+            position: relative;
+        }
+
+        .temp-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #86868B;
+        }
+
+        .temp-indicators {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+        }
+
+        .temp-icon {
+            font-size: 24px;
+        }
+
+        .tech-desc {
+            text-align: center;
+            font-size: 17px;
+            color: #86868B;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* 静音 */
+        .quiet {
+            background: #F5F5F7;
+            text-align: center;
+        }
+
+        .quiet-db {
+            font-size: 96px;
+            font-weight: 300;
+            color: #1D1D1F;
+            line-height: 1;
+        }
+
+        .quiet-text {
+            font-size: 20px;
+            color: #86868B;
+            margin-bottom: 48px;
+        }
+
+        .db-compare {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .db-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .db-name {
+            width: 80px;
+            font-size: 14px;
+            color: #86868B;
+        }
+
+        .db-bar {
+            flex: 1;
+            height: 8px;
+            background: #E0E0E0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .db-fill {
+            height: 100%;
+            background: #1D1D1F;
+            border-radius: 4px;
+        }
+
+        .db-value {
+            width: 50px;
+            font-size: 14px;
+            text-align: right;
+        }
+
+        /* 场景 */
+        .scenes {
+            background: #FFFFFF;
+        }
+
+        .scene-card {
+            border-radius: 24px;
+            overflow: hidden;
+            background: #F5F5F7;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .scene-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1D1D1F;
+        }
+
+        /* 规格 */
+        .specs {
+            background: #F5F5F7;
+        }
+
+        .capacity-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .capacity-card {
+            background: #FFFFFF;
+            border-radius: 24px;
+            padding: 48px;
+            text-align: center;
+        }
+
+        .capacity-size {
+            font-size: 48px;
+            font-weight: 600;
+            color: #1D1D1F;
+            margin-bottom: 16px;
+        }
+
+        .capacity-desc {
+            font-size: 15px;
+            color: #86868B;
+        }
+
+        .specs-table {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .spec-row {
+            display: flex;
+            padding: 20px 32px;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+
+        .spec-name {
+            width: 120px;
+            color: #86868B;
+            font-size: 15px;
+        }
+
+        .spec-value {
+            flex: 1;
+            font-size: 15px;
+            color: #1D1D1F;
+        }
+
+        /* 颜色 */
+        .colors {
+            background: #FFFFFF;
+        }
+
+        .color-options {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+        }
+
+        .color-item {
+            text-align: center;
+        }
+
+        .color-product {
+            width: 200px;
+            height: 250px;
+            border-radius: 24px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .color-black {
+            background: linear-gradient(145deg, #3a3a3c, #1c1c1e);
+        }
+
+        .color-white {
+            background: linear-gradient(145deg, #ffffff, #e8e8e8);
+        }
+
+        .color-name {
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        /* 包装 */
+        .package {
+            background: #FFFFFF;
+            text-align: center;
+        }
+
+        .package-list {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .package-item {
+            width: 100px;
+            text-align: center;
+        }
+
+        .package-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 16px;
+            background: #F5F5F7;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .package-name {
+            font-size: 13px;
+            color: #86868B;
+        }
+
+        /* Footer */
+        .footer {
+            background: #F5F5F7;
+            padding: 80px 60px;
+            text-align: center;
+        }
+
+        .brand {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            margin-bottom: 16px;
+        }
+
+        .slogan {
+            font-size: 18px;
+            color: #86868B;
+            margin-bottom: 32px;
+        }
+
+        .warranty {
+            font-size: 14px;
+            color: #86868B;
+        }
+
+        /* 导航指示器 */
+        .nav-indicator {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #D0D0D0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: #1D1D1F;
+            transform: scale(1.2);
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 24px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .grid-4, .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .quiet-db {
+                font-size: 64px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航指示器 -->
+    <div class="nav-indicator">
+        <div class="nav-dot active"></div>
+        <div class="nav-dot"></div>
+        <div class="nav-dot"></div>
+        <div class="nav-dot"></div>
+        <div class="nav-dot"></div>
+        <div class="nav-dot"></div>
+        <div class="nav-dot"></div>
+        <div class="nav-dot"></div>
+    </div>
+
+    <div class="preview-container">
+        <!-- 01 Hero Section -->
+        <section class="hero section">
+            <div class="hero-product">
+                <span>产品主图区域</span>
+            </div>
+            <h1>冷热两用 一键掌控</h1>
+            <p>智能温控系统</p>
+            <div class="hero-temp">15°C - 65°C 精准温控</div>
+        </section>
+
+        <!-- 02 核心卖点 -->
+        <section class="features section">
+            <h2 class="section-title">四大核心科技</h2>
+            <div class="grid-4">
+                <div class="feature-card">
+                    <div class="feature-icon">🌡️</div>
+                    <div class="feature-title">精准温控</div>
+                    <div class="feature-desc">15-65°C 智能调节</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔇</div>
+                    <div class="feature-title">静音降噪</div>
+                    <div class="feature-desc">28dB 图书馆级静音</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">节能低耗</div>
+                    <div class="feature-desc">45W 低功耗运行</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎒</div>
+                    <div class="feature-title">便携设计</div>
+                    <div class="feature-desc">4L/6L 灵活容量</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 温控技术 -->
+        <section class="temperature section">
+            <h2 class="section-title">智能温控系统</h2>
+            <div class="temp-scale">
+                <div class="temp-bar"></div>
+                <div class="temp-labels">
+                    <span>15°C</span>
+                    <span>30°C</span>
+                    <span>45°C</span>
+                    <span>65°C</span>
+                </div>
+                <div class="temp-indicators">
+                    <span class="temp-icon">❄️ 制冷</span>
+                    <span class="temp-icon">制热 🔥</span>
+                </div>
+            </div>
+            <p class="tech-desc">采用先进半导体制冷技术<br>快速降温降温，静音稳定运行</p>
+        </section>
+
+        <!-- 04 静音降噪 -->
+        <section class="quiet section">
+            <div class="quiet-db">28dB</div>
+            <p class="quiet-text">图书馆级静音</p>
+            <div class="db-compare">
+                <div class="db-item">
+                    <span class="db-name">落叶</span>
+                    <div class="db-bar"><div class="db-fill" style="width: 20%"></div></div>
+                    <span class="db-value">20dB</span>
+                </div>
+                <div class="db-item">
+                    <span class="db-name">本产品</span>
+                    <div class="db-bar"><div class="db-fill" style="width: 28%"></div></div>
+                    <span class="db-value">28dB</span>
+                </div>
+                <div class="db-item">
+                    <span class="db-name">图书馆</span>
+                    <div class="db-bar"><div class="db-fill" style="width: 30%"></div></div>
+                    <span class="db-value">30dB</span>
+                </div>
+                <div class="db-item">
+                    <span class="db-name">耳语</span>
+                    <div class="db-bar"><div class="db-fill" style="width: 40%"></div></div>
+                    <span class="db-value">40dB</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 场景展示 -->
+        <section class="scenes section">
+            <h2 class="section-title">随心而行 随处可用</h2>
+            <div class="grid-4">
+                <div class="scene-card">
+                    <span class="scene-label">车载</span>
+                </div>
+                <div class="scene-card">
+                    <span class="scene-label">卧室</span>
+                </div>
+                <div class="scene-card">
+                    <span class="scene-label">办公室</span>
+                </div>
+                <div class="scene-card">
+                    <span class="scene-label">酒店</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 06 产品规格 -->
+        <section class="specs section">
+            <h2 class="section-title">产品规格</h2>
+            <div class="capacity-grid">
+                <div class="capacity-card">
+                    <div class="capacity-size">4L</div>
+                    <div class="capacity-desc">可放 6 罐 330ml 饮料</div>
+                </div>
+                <div class="capacity-card">
+                    <div class="capacity-size">6L</div>
+                    <div class="capacity-desc">可放 9 罐 330ml 饮料</div>
+                </div>
+            </div>
+            <div class="specs-table">
+                <div class="spec-row">
+                    <span class="spec-name">制冷温度</span>
+                    <span class="spec-value">15-20°C</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">制热温度</span>
+                    <span class="spec-value">50-65°C</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">额定功率</span>
+                    <span class="spec-value">45W</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">额定电压</span>
+                    <span class="spec-value">DC 12V / AC 220V</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">噪音</span>
+                    <span class="spec-value">≤28dB</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">净重</span>
+                    <span class="spec-value">约 1.5kg</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 07 颜色选择 -->
+        <section class="colors section">
+            <h2 class="section-title">双色可选</h2>
+            <div class="color-options">
+                <div class="color-item">
+                    <div class="color-product color-black"></div>
+                    <div class="color-name">深空黑</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-product color-white"></div>
+                    <div class="color-name">纯净白</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 08 包装清单 -->
+        <section class="package section">
+            <h2 class="section-title">包装清单</h2>
+            <div class="package-list">
+                <div class="package-item">
+                    <div class="package-icon">📦</div>
+                    <div class="package-name">主机</div>
+                </div>
+                <div class="package-item">
+                    <div class="package-icon">🔌</div>
+                    <div class="package-name">车载线</div>
+                </div>
+                <div class="package-item">
+                    <div class="package-icon">🔌</div>
+                    <div class="package-name">家用线</div>
+                </div>
+                <div class="package-item">
+                    <div class="package-icon">📖</div>
+                    <div class="package-name">说明书</div>
+                </div>
+                <div class="package-item">
+                    <div class="package-icon">📄</div>
+                    <div class="package-name">保修卡</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="brand">Tripcool</div>
+            <p class="slogan">智能温控 · 随行而安</p>
+            <p class="warranty">全国联保 一年质保 · 7 天无理由退换</p>
+        </footer>
+    </div>
+
+    <script>
+        // 简单的滚动指示器
+        const sections = document.querySelectorAll('section, footer');
+        const dots = document.querySelectorAll('.nav-dot');
+
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY + window.innerHeight / 2;
+            sections.forEach((section, index) => {
+                const top = section.offsetTop;
+                const bottom = top + section.offsetHeight;
+                if (scrollPos >= top && scrollPos < bottom) {
+                    dots.forEach(d => d.classList.remove('active'));
+                    dots[index].classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

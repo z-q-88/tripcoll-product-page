@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripcool 产品摄影镜头参考图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "HarmonyOS Sans SC", "PingFang SC", sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 40px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 60px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #333;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .card {
+            background: #252525;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card-image {
+            height: 280px;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 产品示意图 */
+        .product-mock {
+            width: 120px;
+            height: 160px;
+            background: linear-gradient(145deg, #4a4a4a, #2a2a2a);
+            border-radius: 16px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .product-mock.white {
+            background: linear-gradient(145deg, #f5f5f5, #d0d0d0);
+        }
+
+        .product-mock::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 8px;
+            background: #1a1a1a;
+            border-radius: 4px;
+        }
+
+        .product-mock::after {
+            content: 'Tripcool';
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        /* 光线指示 */
+        .light-ray {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(255,200,100,0.4), transparent);
+        }
+
+        .light-ray.left {
+            left: 20px;
+            top: 20px;
+            transform: rotate(45deg);
+        }
+
+        .light-ray.right {
+            right: 20px;
+            top: 20px;
+            transform: rotate(-45deg);
+        }
+
+        /* 背景样式 */
+        .bg-white {
+            background: #ffffff;
+        }
+
+        .bg-gray {
+            background: linear-gradient(180deg, #f5f5f7, #ffffff);
+        }
+
+        .bg-dark {
+            background: #1a1a1a;
+        }
+
+        /* 场景元素 */
+        .scene-element {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.6;
+        }
+
+        .card-info {
+            padding: 24px;
+        }
+
+        .card-number {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 16px;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            font-size: 11px;
+            padding: 4px 10px;
+            background: #333;
+            border-radius: 12px;
+            color: #aaa;
+        }
+
+        .tag.highlight {
+            background: #3a5f8a;
+            color: #fff;
+        }
+
+        /* 角度指示器 */
+        .angle-indicator {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+        }
+
+        .angle-arrow {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: #fff;
+            bottom: 0;
+            left: 50%;
+            transform-origin: bottom center;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📷 Tripcool 产品摄影镜头参考</h1>
+        <p class="subtitle">极简纯净风 · 20 个必拍镜头可视化指南</p>
+
+        <!-- 主图系列 -->
+        <div class="section">
+            <h2 class="section-title">01 主图系列 (Hero Shots)</h2>
+            <div class="grid">
+                <!-- 01 -->
+                <div class="card">
+                    <div class="card-image bg-gray">
+                        <div class="light-ray left"></div>
+                        <div class="light-ray right"></div>
+                        <div class="product-mock" style="transform: rotateY(-15deg);"></div>
+                        <div class="angle-indicator">
+                            <div class="angle-arrow" style="transform: rotate(-45deg);"></div>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-number">SHOT 01</div>
+                        <div class="card-title">首屏主图 - 45°角</div>
+                        <div class="card-desc">产品 45°角展示，略微俯视，用于详情页首屏</div>
+                        <div class="card-tags">
+                            <span class="tag highlight">纯白背景</span>
+                            <span class="tag">45°角</span>
+                            <span class="tag">柔和阴影</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 02 -->
+                <div class="card">
+                    <div class="card-image bg-white">
+                        <div class="product-mock" style="transform: rotateY(-90deg); width: 40px;"></div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-number">SHOT 02</div>
+                        <div class="card-title">正侧面图</div>
+                        <div class="card-desc">展示产品厚度、接口位置</div>
+                        <div class="card-tags">
+                            <span class="tag highlight">90°侧视</span>
+                            <span class="tag">纯白背景</span>
+                            <span class="tag">接口细节</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 03 -->
+                <div class="card">
+                    <div class="card-image bg-white">
+                        <div class="product-mock" style="transform: rotateY(0deg);"></div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-number">SHOT 03</div>
+                        <div class="card-title">正面图</div>
+                        <div class="card-desc">展示面板、品牌 Logo</div>
+                        <div class="card-tags">
+                            <span class="tag highlight">正视</span>
+                            <span class="tag">纯白背景</span>
+                            <span class="tag">均匀光线</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 04 -->
+                <div class="card">
+                    <div class="card-image bg-white">
+                        <div class="product-mock" style="transform: rotateX(90deg); height: 40px; width: 120px;"></div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-number">SHOT 04</div>
+                        <div class="card-title">顶部俯视图</div>
+                        <div class="card-desc">展示顶部设计、提手</div>
+                        <div class="card-tags">
+                            <span class="tag highlight">90°俯视</span>
+                            <span class="tag">纯白背景</span>
+                            <span class="tag">顶部细节</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 颜色展示系列 -->
+        <div class="section">
+            <h2 class="section-title">02 颜色展示系列</h2>
+            <div class="grid">
+                <!-- 05 -->
+                <div class="card">
+                    <div class="card-image bg-dark">
+                        <div class="light-ray left"></div>
+                        <div class="product-mock" style="background: linear-gradient(145deg, #555, #222);"></div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-number">SHOT 05</div>
+                        <div class="card-title">黑色款特写</div>
+                        <div class="card-desc">强调金属质感，高光勾勒轮廓</div>
+                        <div class="card-tags">
+                            <span class="tag highlight">深空黑</span>
+                            <span class="tag">浅灰背景</span>
+                            <span class="tag">轮廓光</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 06 -->
+                <div class="card">
+                    <div class="card-image bg-gray">
+                        <div class="product-mock white"></div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-number">SHOT 06</div>
+                        <div class="card-title">白色款特写</div>
+                        <div class="card-desc">保留白色层次感，避免死白</div>
+                        <div class="card-tags">
+                            <span class="tag highlight">纯净白</span>
+                            <span class="tag">浅灰背景</span>
+                            <span class="tag">柔光</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 07 -->
+                <div class="card">
+                    <div class="card-image bg-white">
+                        <div style="display: flex; gap: 20px;">
+                            <div class="product-mock" style="background: linear-gradient(145deg, #555, #222);"></div>
+                            <div class="product-mock white"></div>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-number">SHOT 07</div>
+                        <div class="card-title">双色并排</div>
+                        <div class="card-desc">两款产品并排展示</div>
+                        <div class="card-tags">
+                            <span class="tag highlight">双色对比</span>
+                            <span class="tag">纯白背景</span>
+                            <span class="tag">并排构图</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 场景图系列 -->
+        <div class="section">
+            <h2 class="section-title">03 场景图系列</h2>
+            <div class="grid">
+                <!-- 12 -->
+                <div class="card">
+                    <div class="card-image" style="background: linear-gradient(180deg, #2a3a4a, #1a1a1a);">
+                        <div class="product-mock" style="position: absolute; bottom: 60px;"></div>
+                        <span class="scene-element" style="bottom: 20px; left: 20px;">🚗</span>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-number">SHOT 12</div>
+                        <div class="card-title">车载场景</div>
+                        <div class="card-desc">汽车中控台，自然光从车窗射入</div>
+                        <div class="card-tags">
+                            <span class="tag highlight">车内</span>
+                            <span class="tag">自然光</span>
+                            <span class="tag">暖调</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 13 -->
+                <div class="card">
+                    <div class="card-image" style="background: linear-gradient(180deg, #4a3a2a, #2a1a1a);">
+                        <div class="product-mock white" style="position: absolute; bottom: 60px;"></div>
+                        <span class="scene-element" style="bottom: 20px; left: 20px;">🛏️</span>
+                        <span class="scene-element" style="bottom: 20px; right: 20px;">💡</span>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-number">SHOT 13</div>
+                        <div class="card-title">卧室场景</div>
+                        <div class="card-desc">床头柜，台灯暖光，温馨氛围</div>
+                        <div class="card-tags">
+                            <span class="tag highlight">卧室</span>
+                            <span class="tag">暖光</span>
+                            <span class="tag">温馨</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 14 -->
+                <div class="card">
+                    <div class="card-image" style="background: linear-gradient(180deg, #f5f5f5, #e0e0e0); color: #333;">
+                        <div class="product-mock white" style="position: absolute; bottom: 60px;"></div>
+                        <span class="scene-element" style="bottom: 20px; left: 20px; color: #666;">💻</span>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-number">SHOT 14</div>
+                        <div class="card-title">办公室场景</div>
+                        <div class="card-desc">办公桌，明亮自然光，清爽</div>
+                        <div class="card-tags">
+                            <span class="tag highlight">办公室</span>
+                            <span class="tag">自然光</span>
+                            <span class="tag">冷调</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 15 -->
+                <div class="card">
+                    <div class="card-image" style="background: linear-gradient(180deg, #3a3a3a, #1a1a1a);">
+                        <div class="product-mock" style="background: linear-gradient(145deg, #666, #333); position: absolute; bottom: 60px;"></div>
+                        <span class="scene-element" style="bottom: 20px; left: 20px;">🏨</span>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-number">SHOT 15</div>
+                        <div class="card-title">酒店场景</div>
+                        <div class="card-desc">大理石台面，高级灰调</div>
+                        <div class="card-tags">
+                            <span class="tag highlight">酒店</span>
+                            <span class="tag">高级感</span>
+                            <span class="tag">灰调</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 功能可视化系列 -->
+        <div class="section">
+            <h2 class="section-title">04 功能可视化系列</h2>
+            <div class="grid">
+                <!-- 16 -->
+                <div class="card">
+                    <div class="card-image" style="background: linear-gradient(90deg, rgba(0,122,255,0.1), rgba(255,149,0,0.1));">
+                        <div class="product-mock"></div>
+                        <div style="position: absolute; left: 10px; top: 50%; color: #007AFF; font-size: 24px;">❄️</div>
+                        <div style="position: absolute; right: 10px; top: 50%; color: #FF9500; font-size: 24px;">🔥</div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-number">SHOT 16</div>
+                        <div class="card-title">温度可视化</div>
+                        <div class="card-desc">蓝色冷光到橙色热光渐变</div>
+                        <div class="card-tags">
+                            <span class="tag highlight">温控</span>
+                            <span class="tag">光效</span>
+                            <span class="tag">可视化</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 17 -->
+                <div class="card">
+                    <div class="card-image bg-gray">
+                        <div class="product-mock white"></div>
+                        <div style="position: absolute; top: 20px; font-size: 32px; color: #007AFF;">28dB</div>
+                        <div style="position: absolute; bottom: 40px; display: flex; gap: 4px;">
+                            <div style="width: 4px; height: 20px; background: #ddd;"></div>
+                            <div style="width: 4px; height: 28px; background: #007AFF;"></div>
+                            <div style="width: 4px; height: 35px; background: #ddd;"></div>
+                            <div style="width: 4px; height: 45px; background: #ddd;"></div>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-number">SHOT 17</div>
+                        <div class="card-title">静音可视化</div>
+                        <div class="card-desc">声波图形展示 28dB 低噪</div>
+                        <div class="card-tags">
+                            <span class="tag highlight">静音</span>
+                            <span class="tag">28dB</span>
+                            <span class="tag">声波</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 18 -->
+                <div class="card">
+                    <div class="card-image bg-white">
+                        <div class="product-mock" style="width: 140px;"></div>
+                        <div style="position: absolute; top: 20px; font-size: 48px; font-weight: 600;">4L / 6L</div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-number">SHOT 18</div>
+                        <div class="card-title">容量可视化</div>
+                        <div class="card-desc">内部放置 6-9 罐饮料展示</div>
+                        <div class="card-tags">
+                            <span class="tag highlight">容量</span>
+                            <span class="tag">4L/6L</span>
+                            <span class="tag">展示</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 包装清单 -->
+        <div class="section">
+            <h2 class="section-title">05 包装清单</h2>
+            <div class="grid">
+                <!-- 19 -->
+                <div class="card">
+                    <div class="card-image bg-gray">
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center;">
+                            <div style="font-size: 32px;">📦</div>
+                            <div style="font-size: 32px;">🔌</div>
+                            <div style="font-size: 32px;">🔌</div>
+                            <div style="font-size: 32px;">📖</div>
+                            <div style="font-size: 32px;">📄</div>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-number">SHOT 19</div>
+                        <div class="card-title">包装全家福</div>
+                        <div class="card-desc">主机 + 车载线 + 家用线 + 说明书 + 保修卡</div>
+                        <div class="card-tags">
+                            <span class="tag highlight">俯拍</span>
+                            <span class="tag">平铺</span>
+                            <span class="tag">浅灰背景</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
