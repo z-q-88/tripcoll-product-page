@@ -40,6 +40,80 @@
             50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.4); }
         }
 
+        /* 360° 产品查看器 */
+        .viewer360-container {
+            width: 260px;
+            height: 320px;
+            margin-bottom: 48px;
+            position: relative;
+            border-radius: 8px;
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+            box-shadow: 0 40px 100px rgba(212, 175, 55, 0.1), 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            overflow: hidden;
+            cursor: grab;
+            user-select: none;
+            touch-action: none;
+            z-index: 1;
+            animation: elegantFloat 4s ease-in-out infinite;
+        }
+
+        .viewer360-container:active {
+            cursor: grabbing;
+        }
+
+        .viewer360-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            pointer-events: none;
+        }
+
+        .viewer360-hint {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 1px;
+            pointer-events: none;
+            animation: fadeInOut 2s ease-in-out infinite;
+            white-space: nowrap;
+        }
+
+        .viewer360-dots {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            pointer-events: none;
+        }
+
+        .viewer360-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .viewer360-dot.active {
+            background: rgba(212, 175, 55, 0.8);
+            transform: scale(1.2);
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
         /* Hero Section - Banner */
         .hero {
             min-height: 100vh;
@@ -906,8 +980,15 @@
             <span class="b2b-badge">B2B Premium Custom</span>
             <div class="hero-logo">NINGBO ICEBERG</div>
 
-            <div class="hero-product">
-                <span>PRODUCT VIEW</span>
+            <div class="viewer360-container" id="viewer360">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='320'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%232a2a2a;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%231a1a1a;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='260' height='320' fill='url(%23grad)'/%3E%3Crect x='60' y='40' width='140' height='240' rx='8' fill='%23222222' stroke='%23D4AF37' stroke-width='2'/%3E%3Crect x='70' y='50' width='120' height='220' rx='4' fill='%231a1a1a'/%3E%3Ctext x='130' y='160' text-anchor='middle' fill='%234a4a4a' font-size='12' font-family='sans-serif'%3EPRODUCT 360°%3C/text%3E%3Ccircle cx='130' cy='120' r='20' fill='none' stroke='%23D4AF37' stroke-width='1.5'/%3E%3Cpath d='M130 100 L130 90 M130 140 L130 150 M110 120 L100 120 M150 120 L160 120' stroke='%23D4AF37' stroke-width='1.5'/%3E%3C/svg%3E" alt="Product 360° View" class="viewer360-image" id="viewer360Img">
+                <div class="viewer360-dots">
+                    <span class="viewer360-dot" data-frame="0"></span>
+                    <span class="viewer360-dot" data-frame="9"></span>
+                    <span class="viewer360-dot" data-frame="18"></span>
+                    <span class="viewer360-dot" data-frame="27"></span>
+                </div>
+                <div class="viewer360-hint">← 拖动旋转 →</div>
             </div>
 
             <h1>极静奢华 · 精准呵护</h1>
@@ -1329,6 +1410,74 @@
                 document.body.classList.add('mode-heat');
             }
         }
+
+        // 360° 产品查看器
+        const viewer360 = {
+            container: null,
+            image: null,
+            dots: null,
+            currentFrame: 0,
+            totalFrames: 36,
+            isDragging: false,
+            startX: 0,
+            rotation: 0,
+
+            init() {
+                this.container = document.getElementById('viewer360');
+                this.image = document.getElementById('viewer360Img');
+                this.dots = this.container.querySelectorAll('.viewer360-dot');
+
+                // 鼠标事件
+                this.container.addEventListener('mousedown', (e) => this.onDragStart(e));
+                document.addEventListener('mousemove', (e) => this.onDragMove(e));
+                document.addEventListener('mouseup', () => this.onDragEnd());
+
+                // 触摸事件
+                this.container.addEventListener('touchstart', (e) => this.onDragStart(e.touches[0]));
+                document.addEventListener('touchmove', (e) => this.onDragMove(e.touches[0]));
+                document.addEventListener('touchend', () => this.onDragEnd());
+            },
+
+            onDragStart(e) {
+                this.isDragging = true;
+                this.startX = e.clientX;
+                this.container.style.transition = 'none';
+            },
+
+            onDragMove(e) {
+                if (!this.isDragging) return;
+                e.preventDefault?.();
+
+                const deltaX = e.clientX - this.startX;
+                this.startX = e.clientX;
+                this.rotation += deltaX * 2;
+                this.currentFrame = Math.round(Math.abs(this.rotation) % 360 / 10);
+
+                this.updateView();
+            },
+
+            onDragEnd() {
+                this.isDragging = false;
+                this.container.style.transition = 'transform 0.3s ease';
+            },
+
+            updateView() {
+                // 更新圆点指示器
+                this.dots.forEach((dot, index) => {
+                    const frameStep = Math.floor(this.totalFrames / this.dots.length);
+                    const targetFrame = index * frameStep;
+                    const nextFrame = ((index + 1) * frameStep) % this.totalFrames;
+
+                    if (this.currentFrame >= targetFrame && this.currentFrame < nextFrame) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+        };
+
+        viewer360.init();
     </script>
 </body>
 </html>

@@ -42,6 +42,89 @@
             position: relative;
         }
 
+        /* 360° 产品查看器 */
+        .viewer360-container {
+            width: 240px;
+            height: 300px;
+            margin-bottom: 48px;
+            position: relative;
+            border-radius: 8px;
+            background: linear-gradient(145deg, #f9f6f0, #e8e3d9);
+            box-shadow: 0 40px 100px rgba(212, 175, 55, 0.15), 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            overflow: hidden;
+            cursor: grab;
+            user-select: none;
+            touch-action: none;
+            z-index: 1;
+            animation: subtleFloat 4s ease-in-out infinite;
+        }
+
+        .viewer360-container:active {
+            cursor: grabbing;
+        }
+
+        .viewer360-container:hover {
+            box-shadow: 0 50px 120px rgba(212, 175, 55, 0.2), 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .viewer360-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.1s ease-out;
+        }
+
+        .viewer360-hint {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 16px;
+            font-size: 11px;
+            color: #8a8478;
+            pointer-events: none;
+            opacity: 0;
+            animation: fadeInOut 3s ease-in-out 0.5s forwards;
+        }
+
+        .viewer360-hint svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .viewer360-dots {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 4px;
+        }
+
+        .viewer360-dot {
+            width: 4px;
+            height: 4px;
+            background: rgba(138, 132, 120, 0.3);
+            border-radius: 50%;
+        }
+
+        .viewer360-dot.active {
+            background: rgba(138, 132, 120, 0.8);
+        }
+
         .hero::before {
             content: '';
             position: absolute;
@@ -762,8 +845,18 @@
         <!-- Hero Section -->
         <section class="hero">
             <span class="hero-badge">Premium Collection</span>
-            <div class="hero-product">
-                <span>产品主图</span>
+            <div class="viewer360-container" id="viewer360">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='300'%3E%3Crect fill='%23f9f6f0' width='240' height='300'/%3E%3Ctext fill='%23b8a88c' font-family='sans-serif' font-size='14' x='50%25' y='45%25' text-anchor='middle'%3EPRODUCT 0°%3C/text%3E%3C/svg%3E" alt="产品 360° 视图" class="viewer360-image" id="viewer360Img" />
+                <div class="viewer360-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3Cpath d='M12 18v-6'/%3E%3Cpath d='M9 15l3 3 3-3'/%3E%3C/svg%3E
+                    拖动旋转
+                </div>
+                <div class="viewer360-dots">
+                    <span class="viewer360-dot active"></span>
+                    <span class="viewer360-dot"></span>
+                    <span class="viewer360-dot"></span>
+                    <span class="viewer360-dot"></span>
+                </div>
             </div>
             <h1>冷热双模 智控随行</h1>
             <p>智能温控系统 · 奢华生活触手可及</p>
@@ -1064,6 +1157,86 @@
     </div>
 
     <script>
+        // 360° 产品查看器
+        const viewer360 = {
+            container: null,
+            image: null,
+            dots: null,
+            currentFrame: 0,
+            totalFrames: 36,
+            isDragging: false,
+            startX: 0,
+            rotation: 0,
+
+            init() {
+                this.container = document.getElementById('viewer360');
+                this.image = document.getElementById('viewer360Img');
+                this.dots = this.container.querySelectorAll('.viewer360-dot');
+
+                if (!this.container || !this.image) return;
+
+                this.container.addEventListener('mousedown', this.onStart.bind(this));
+                document.addEventListener('mousemove', this.onMove.bind(this));
+                document.addEventListener('mouseup', this.onEnd.bind(this));
+
+                this.container.addEventListener('touchstart', this.onStart.bind(this), { passive: false });
+                document.addEventListener('touchmove', this.onMove.bind(this), { passive: false });
+                document.addEventListener('touchend', this.onEnd.bind(this));
+
+                setTimeout(() => this.showHint(), 500);
+            },
+
+            onStart(e) {
+                this.isDragging = true;
+                this.startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+                this.container.style.cursor = 'grabbing';
+                e.preventDefault && e.preventDefault();
+            },
+
+            onMove(e) {
+                if (!this.isDragging) return;
+
+                const currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+                const deltaX = currentX - this.startX;
+
+                if (Math.abs(deltaX) > 5) {
+                    this.rotation += deltaX * 2;
+                    this.updateFrame();
+                    this.startX = currentX;
+                }
+                e.preventDefault && e.preventDefault();
+            },
+
+            onEnd() {
+                this.isDragging = false;
+                this.container.style.cursor = 'grab';
+            },
+
+            updateFrame() {
+                let normalizedRotation = ((this.rotation % 360) + 360) % 360;
+                this.currentFrame = Math.round(normalizedRotation / (360 / this.totalFrames));
+
+                const angle = Math.round(this.currentFrame * (360 / this.totalFrames));
+                this.image.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='300'%3E%3Crect fill='%23f9f6f0' width='240' height='300'/%3E%3Ctext fill='%23b8a88c' font-family='sans-serif' font-size='14' x='50%25' y='45%25' text-anchor='middle'%3EPRODUCT ${angle}°%3C/text%3E%3C/svg%3E`;
+
+                const dotIndex = Math.floor(this.currentFrame / (this.totalFrames / this.dots.length));
+                this.dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === dotIndex);
+                });
+            },
+
+            showHint() {
+                const hint = this.container.querySelector('.viewer360-hint');
+                if (hint) {
+                    hint.style.animation = 'none';
+                    hint.offsetHeight;
+                    hint.style.animation = 'fadeInOut 3s ease-in-out forwards';
+                }
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => viewer360.init());
+
         function setTempMode(mode) {
             document.querySelectorAll('.temp-mode-btn').forEach(btn => {
                 btn.classList.remove('active');
