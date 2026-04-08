@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripcool 迷你冷温小冰箱 - 高端奢华版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "HarmonyOS Sans SC", "PingFang SC", "Didot", "Times New Roman", serif;
+            background: #FAF8F5;
+            line-height: 1.6;
+            color: #1a1a1a;
+        }
+
+        .mobile-container {
+            max-width: 414px;
+            margin: 0 auto;
+            background: #FAF8F5;
+        }
+
+        /* 优雅动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(180deg, #FAF8F5 0%, #F5F0EB 100%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(212, 175, 55, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 10px 28px;
+            background: linear-gradient(135deg, #D4AF37, #C5A028);
+            color: #ffffff;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-product {
+            width: 240px;
+            height: 300px;
+            background: linear-gradient(145deg, #f9f6f0, #e8e3d9);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 48px;
+            box-shadow:
+                0 40px 100px rgba(212, 175, 55, 0.15),
+                0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+            animation: subtleFloat 4s ease-in-out infinite;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .hero-product::after {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 4px;
+            pointer-events: none;
+        }
+
+        .hero-product span {
+            color: #b8a88c;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            letter-spacing: 2px;
+            z-index: 1;
+            font-family: "Didot", "Times New Roman", serif;
+        }
+
+        .hero p {
+            font-size: 15px;
+            color: #8a8478;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            z-index: 1;
+        }
+
+        .hero-temp {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 40px;
+            background: #ffffff;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            z-index: 1;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.08);
+        }
+
+        .temp-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .temp-icon {
+            font-size: 22px;
+        }
+
+        .temp-value {
+            font-size: 16px;
+            font-weight: 500;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+        }
+
+        .temp-label {
+            font-size: 11px;
+            color: #a89f91;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+            margin: 40px auto 0;
+            z-index: 1;
+        }
+
+        /* Section 通用 */
+        .section {
+            padding: 100px 28px;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 30px;
+            font-weight: 400;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+            letter-spacing: 3px;
+            font-family: "Didot", "Times New Roman", serif;
+        }
+
+        .section-subtitle {
+            font-size: 12px;
+            color: #a89f91;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .divider-line {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+        }
+
+        /* 核心卖点 */
+        .features {
+            background: #ffffff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: linear-gradient(145deg, #faf8f5, #f5f0eb);
+            border-radius: 0;
+            padding: 48px 24px;
+            text-align: center;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+            transition: width 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.12);
+        }
+
+        .feature-card:hover::before {
+            width: 60%;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.08));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+        }
+
+        .feature-desc {
+            font-size: 13px;
+            color: #8a8478;
+            letter-spacing: 0.5px;
+        }
+
+        /* 温控技术 */
+        .temperature {
+            background: linear-gradient(180deg, #FAF8F5 0%, #F5F0EB 100%);
+        }
+
+        .temp-scale {
+            margin: 0 auto 56px;
+            padding: 40px;
+            background: #ffffff;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.08);
+        }
+
+        .temp-bar {
+            height: 6px;
+            background: linear-gradient(90deg, #C9D6DF 0%, #A8B8C8 40%, #D4AF37 70%, #C9953B 100%);
+            border-radius: 0;
+            margin: 24px 0;
+        }
+
+        .temp-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .temp-label {
+            font-size: 12px;
+            color: #8a8478;
+            letter-spacing: 1px;
+        }
+
+        .temp-indicators {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 32px;
+            padding: 20px 32px;
+            background: linear-gradient(145deg, #faf8f5, #f5f0eb);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .temp-mode {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .temp-mode.cold {
+            color: #5A7A8C;
+        }
+
+        .temp-mode.heat {
+            color: #B8863B;
+        }
+
+        .tech-desc {
+            text-align: center;
+            font-size: 14px;
+            color: #8a8478;
+            line-height: 2;
+            letter-spacing: 0.5px;
+        }
+
+        .tech-highlight {
+            color: #D4AF37;
+            font-weight: 500;
+        }
+
+        /* 静音 */
+        .quiet {
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .quiet-db {
+            font-size: 96px;
+            font-weight: 200;
+            color: #1a1a1a;
+            line-height: 1;
+            margin-bottom: 16px;
+            letter-spacing: -4px;
+            font-family: "Didot", "Times New Roman", serif;
+        }
+
+        .quiet-text {
+            font-size: 15px;
+            color: #8a8478;
+            margin-bottom: 56px;
+            letter-spacing: 1px;
+        }
+
+        .db-compare {
+            text-align: left;
+            max-width: 340px;
+            margin: 0 auto;
+            padding: 40px;
+            background: linear-gradient(145deg, #faf8f5, #f5f0eb);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .db-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .db-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .db-name {
+            width: 60px;
+            font-size: 12px;
+            color: #8a8478;
+            letter-spacing: 0.5px;
+        }
+
+        .db-bar {
+            flex: 1;
+            height: 4px;
+            background: rgba(212, 175, 55, 0.15);
+            overflow: hidden;
+            margin: 0 16px;
+        }
+
+        .db-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #D4AF37, #C5A028);
+        }
+
+        .db-fill.product {
+            background: linear-gradient(90deg, #C5A028, #D4AF37);
+        }
+
+        .db-value {
+            font-size: 13px;
+            color: #1a1a1a;
+            font-weight: 500;
+            min-width: 50px;
+            text-align: right;
+            letter-spacing: 0.5px;
+        }
+
+        /* 场景展示 */
+        .scenes {
+            background: linear-gradient(180deg, #F5F0EB 0%, #FAF8F5 100%);
+        }
+
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .scene-card {
+            border-radius: 0;
+            overflow: hidden;
+            background: #ffffff;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.25);
+        }
+
+        .scene-icon {
+            font-size: 48px;
+            z-index: 1;
+            margin-bottom: 50px;
+            opacity: 0.8;
+        }
+
+        .scene-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #1a1a1a;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* 规格 */
+        .specs {
+            background: #ffffff;
+        }
+
+        .capacity-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 56px;
+        }
+
+        .capacity-card {
+            background: linear-gradient(145deg, #faf8f5, #f5f0eb);
+            padding: 48px 24px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .capacity-size {
+            font-size: 56px;
+            font-weight: 300;
+            color: #D4AF37;
+            margin-bottom: 8px;
+            line-height: 1;
+            font-family: "Didot", "Times New Roman", serif;
+        }
+
+        .capacity-unit {
+            font-size: 24px;
+            font-weight: 300;
+            color: #b8a88c;
+        }
+
+        .capacity-desc {
+            font-size: 13px;
+            color: #8a8478;
+            margin-top: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .specs-table {
+            background: linear-gradient(145deg, #faf8f5, #f5f0eb);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .spec-row {
+            display: flex;
+            padding: 22px 28px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+
+        .spec-name {
+            width: 110px;
+            color: #8a8478;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        .spec-value {
+            flex: 1;
+            font-size: 14px;
+            color: #1a1a1a;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* 颜色 */
+        .colors {
+            background: linear-gradient(180deg, #FAF8F5 0%, #F5F0EB 100%);
+        }
+
+        .color-options {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+        }
+
+        .color-item {
+            text-align: center;
+        }
+
+        .color-product {
+            width: 160px;
+            height: 200px;
+            border-radius: 4px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .color-black {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+        }
+
+        .color-white {
+            background: linear-gradient(145deg, #ffffff, #f0ede8);
+        }
+
+        .color-product span {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+        }
+
+        .color-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: #1a1a1a;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* 包装 */
+        .package {
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .package-list {
+            display: flex;
+            justify-content: center;
+            gap: 36px;
+            flex-wrap: wrap;
+        }
+
+        .package-item {
+            width: 84px;
+            text-align: center;
+        }
+
+        .package-icon {
+            width: 68px;
+            height: 68px;
+            margin: 0 auto 20px;
+            background: linear-gradient(145deg, #faf8f5, #f5f0eb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .package-name {
+            font-size: 12px;
+            color: #8a8478;
+            letter-spacing: 0.5px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            padding: 72px 24px;
+            text-align: center;
+        }
+
+        .brand {
+            font-size: 32px;
+            font-weight: 400;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            color: #D4AF37;
+            font-family: "Didot", "Times New Roman", serif;
+        }
+
+        .slogan {
+            font-size: 13px;
+            color: #6a6458;
+            margin-bottom: 40px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .warranty {
+            display: inline-block;
+            padding: 24px 40px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .warranty-text {
+            font-size: 13px;
+            color: #6a6458;
+            line-height: 2.2;
+            letter-spacing: 0.5px;
+        }
+
+        .warranty-highlight {
+            color: #D4AF37;
+            font-weight: 500;
+        }
+
+        /* 装饰元素 */
+        .ornament {
+            width: 8px;
+            height: 8px;
+            background: #D4AF37;
+            transform: rotate(45deg);
+            margin: 0 auto 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <span class="hero-badge">Premium Collection</span>
+            <div class="hero-product">
+                <span>产品主图</span>
+            </div>
+            <h1>冷热双模 智控随行</h1>
+            <p>智能温控系统 · 奢华生活触手可及</p>
+            <div class="hero-temp">
+                <div class="temp-item">
+                    <span class="temp-icon">❄️</span>
+                    <span class="temp-value">15°C</span>
+                    <span class="temp-label">制冷</span>
+                </div>
+                <div style="width: 1px; height: 40px; background: rgba(212, 175, 55, 0.2);"></div>
+                <div class="temp-item">
+                    <span class="temp-value">65°C</span>
+                    <span class="temp-label">制热</span>
+                    <span class="temp-icon">🔥</span>
+                </div>
+            </div>
+            <div class="hero-divider"></div>
+        </section>
+
+        <div class="divider-line"></div>
+
+        <!-- 核心卖点 -->
+        <section class="features section">
+            <div class="section-header">
+                <h2 class="section-title">核心科技</h2>
+                <p class="section-subtitle">Core Technologies</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌡️</div>
+                    <div class="feature-title">精准温控</div>
+                    <div class="feature-desc">15-65°C 智能调节</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔇</div>
+                    <div class="feature-title">静音降噪</div>
+                    <div class="feature-desc">28dB 图书馆级</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">节能低耗</div>
+                    <div class="feature-desc">45W 低功耗</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎒</div>
+                    <div class="feature-title">便携设计</div>
+                    <div class="feature-desc">4L/6L 双容量</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider-line"></div>
+
+        <!-- 温控技术 -->
+        <section class="temperature section">
+            <div class="section-header">
+                <h2 class="section-title">智能温控</h2>
+                <p class="section-subtitle">Intelligent Control</p>
+            </div>
+            <div class="temp-scale">
+                <div class="temp-bar"></div>
+                <div class="temp-labels">
+                    <span class="temp-label">15°C</span>
+                    <span class="temp-label">30°C</span>
+                    <span class="temp-label">45°C</span>
+                    <span class="temp-label">65°C</span>
+                </div>
+                <div class="temp-indicators">
+                    <span class="temp-mode cold">❄️ 制冷模式</span>
+                    <span class="temp-mode heat">制热模式 🔥</span>
+                </div>
+            </div>
+            <p class="tech-desc">
+                采用<span class="tech-highlight">先进半导体制冷技术</span><br>
+                Peltier 效应 · 快速降温 · 静音稳定
+            </p>
+        </section>
+
+        <div class="divider-line"></div>
+
+        <!-- 静音降噪 -->
+        <section class="quiet section">
+            <div class="section-header">
+                <h2 class="section-title">静谧无声</h2>
+                <p class="section-subtitle">Ultra Quiet</p>
+            </div>
+            <div class="quiet-db">28dB</div>
+            <p class="quiet-text">图书馆级别的静音体验</p>
+            <div class="db-compare">
+                <div class="db-item">
+                    <span class="db-name">落叶</span>
+                    <div class="db-bar"><div class="db-fill" style="width: 20%"></div></div>
+                    <span class="db-value">20dB</span>
+                </div>
+                <div class="db-item">
+                    <span class="db-name">本产品</span>
+                    <div class="db-bar"><div class="db-fill product" style="width: 28%"></div></div>
+                    <span class="db-value">28dB</span>
+                </div>
+                <div class="db-item">
+                    <span class="db-name">图书馆</span>
+                    <div class="db-bar"><div class="db-fill" style="width: 30%"></div></div>
+                    <span class="db-value">30dB</span>
+                </div>
+                <div class="db-item">
+                    <span class="db-name">耳语</span>
+                    <div class="db-bar"><div class="db-fill" style="width: 40%"></div></div>
+                    <span class="db-value">40dB</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider-line"></div>
+
+        <!-- 场景展示 -->
+        <section class="scenes section">
+            <div class="section-header">
+                <h2 class="section-title">随心而行</h2>
+                <p class="section-subtitle">Any Occasion</p>
+            </div>
+            <div class="scenes-grid">
+                <div class="scene-card">
+                    <span class="scene-icon">🚗</span>
+                    <span class="scene-label">车载出行</span>
+                </div>
+                <div class="scene-card">
+                    <span class="scene-icon">🛏️</span>
+                    <span class="scene-label">卧室床头</span>
+                </div>
+                <div class="scene-card">
+                    <span class="scene-icon">💼</span>
+                    <span class="scene-label">办公室</span>
+                </div>
+                <div class="scene-card">
+                    <span class="scene-icon">🏨</span>
+                    <span class="scene-label">酒店旅行</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider-line"></div>
+
+        <!-- 产品规格 -->
+        <section class="specs section">
+            <div class="section-header">
+                <h2 class="section-title">规格参数</h2>
+                <p class="section-subtitle">Specifications</p>
+            </div>
+            <div class="capacity-grid">
+                <div class="capacity-card">
+                    <div class="capacity-size">4<span class="capacity-unit">L</span></div>
+                    <div class="capacity-desc">可容纳 6 罐 330ml 饮料</div>
+                </div>
+                <div class="capacity-card">
+                    <div class="capacity-size">6<span class="capacity-unit">L</span></div>
+                    <div class="capacity-desc">可容纳 9 罐 330ml 饮料</div>
+                </div>
+            </div>
+            <div class="specs-table">
+                <div class="spec-row">
+                    <span class="spec-name">制冷温度</span>
+                    <span class="spec-value">15-20°C</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">制热温度</span>
+                    <span class="spec-value">50-65°C</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">额定功率</span>
+                    <span class="spec-value">45W</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">额定电压</span>
+                    <span class="spec-value">DC 12V / AC 220V</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">运行噪音</span>
+                    <span class="spec-value">≤28dB</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">产品净重</span>
+                    <span class="spec-value">约 1.5kg</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider-line"></div>
+
+        <!-- 颜色选择 -->
+        <section class="colors section">
+            <div class="section-header">
+                <h2 class="section-title">双色可选</h2>
+                <p class="section-subtitle">Color Options</p>
+            </div>
+            <div class="color-options">
+                <div class="color-item">
+                    <div class="color-product color-black">
+                        <span>产品图</span>
+                    </div>
+                    <div class="color-name">Midnight Black</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-product color-white">
+                        <span>产品图</span>
+                    </div>
+                    <div class="color-name">Pearl White</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider-line"></div>
+
+        <!-- 包装清单 -->
+        <section class="package section">
+            <div class="section-header">
+                <h2 class="section-title">包装清单</h2>
+                <p class="section-subtitle">Package Contents</p>
+            </div>
+            <div class="package-list">
+                <div class="package-item">
+                    <div class="package-icon">📦</div>
+                    <div class="package-name">冰箱主机</div>
+                </div>
+                <div class="package-item">
+                    <div class="package-icon">🔌</div>
+                    <div class="package-name">车载电源线</div>
+                </div>
+                <div class="package-item">
+                    <div class="package-icon">🔌</div>
+                    <div class="package-name">家用电源线</div>
+                </div>
+                <div class="package-item">
+                    <div class="package-icon">📖</div>
+                    <div class="package-name">使用说明书</div>
+                </div>
+                <div class="package-item">
+                    <div class="package-icon">📄</div>
+                    <div class="package-name">保修卡</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider-line"></div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="brand">TRIPCOOL</div>
+            <p class="slogan">Premium Temperature Control</p>
+            <div class="warranty">
+                <div class="warranty-text">
+                    <span class="warranty-highlight">一年质保</span> · 品质保证<br>
+                    <span class="warranty-highlight">7 天无理由</span> 退换服务
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
