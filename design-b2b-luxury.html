@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ningbo Iceberg - 半导体迷你冰箱 | B2B 高端定制</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "HarmonyOS Sans SC", "PingFang SC", "Didot", "Times New Roman", serif;
+            background: #0a0a0a;
+            line-height: 1.6;
+            color: #ffffff;
+        }
+
+        .mobile-container {
+            max-width: 414px;
+            margin: 0 auto;
+            background: #0a0a0a;
+        }
+
+        /* 动画效果 */
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes elegantFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.4); }
+        }
+
+        /* Hero Section - Banner */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 30% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* 装饰性边框 */
+        .hero-border {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            pointer-events: none;
+        }
+
+        .hero-corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(212, 175, 55, 0.4);
+        }
+
+        .hero-corner.tl { top: 18px; left: 18px; border-right: none; border-bottom: none; }
+        .hero-corner.tr { top: 18px; right: 18px; border-left: none; border-bottom: none; }
+        .hero-corner.bl { bottom: 18px; left: 18px; border-right: none; border-top: none; }
+        .hero-corner.br { bottom: 18px; right: 18px; border-left: none; border-top: none; }
+
+        .b2b-badge {
+            display: inline-block;
+            padding: 10px 32px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.08));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 4px;
+            color: #D4AF37;
+            text-transform: uppercase;
+            margin-bottom: 48px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-logo {
+            font-size: 36px;
+            font-weight: 400;
+            letter-spacing: 8px;
+            color: #D4AF37;
+            margin-bottom: 24px;
+            font-family: "Didot", "Times New Roman", serif;
+            background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #C5A028 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+            z-index: 1;
+        }
+
+        .hero-product {
+            width: 260px;
+            height: 320px;
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 48px;
+            box-shadow:
+                0 40px 100px rgba(212, 175, 55, 0.1),
+                0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+            animation: elegantFloat 4s ease-in-out infinite;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .hero-product::after {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+            pointer-events: none;
+        }
+
+        .hero-product span {
+            color: #4a4a4a;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #ffffff;
+            letter-spacing: 4px;
+            z-index: 1;
+            font-family: "Didot", "Times New Roman", serif;
+        }
+
+        .hero-subtitle {
+            font-size: 13px;
+            color: #6a6a6a;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            z-index: 1;
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 32px;
+            z-index: 1;
+        }
+
+        .hero-feature {
+            text-align: center;
+        }
+
+        .hero-feature-value {
+            font-size: 24px;
+            font-weight: 500;
+            color: #D4AF37;
+            letter-spacing: 1px;
+        }
+
+        .hero-feature-label {
+            font-size: 11px;
+            color: #5a5a5a;
+            letter-spacing: 1px;
+            margin-top: 6px;
+            text-transform: uppercase;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(180deg, #D4AF37 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 28px;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            color: #D4AF37;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 400;
+            color: #ffffff;
+            letter-spacing: 2px;
+            font-family: "Didot", "Times New Roman", serif;
+        }
+
+        .section-title-en {
+            font-size: 12px;
+            color: #4a4a4a;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 12px;
+        }
+
+        /* Scene Section */
+        .scene {
+            background: linear-gradient(180deg, #0f0f0f 0%, #0a0a0a 100%);
+        }
+
+        .scene-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .scene-image {
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 4/3;
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.8), rgba(15, 15, 15, 0.8));
+            border-radius: 4px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scene-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+        }
+
+        .scene-image span {
+            color: #4a4a4a;
+            font-size: 13px;
+            letter-spacing: 2px;
+            z-index: 1;
+        }
+
+        .scene-text {
+            font-size: 15px;
+            color: #8a8a8a;
+            line-height: 2;
+            max-width: 320px;
+        }
+
+        .scene-text strong {
+            color: #D4AF37;
+            font-weight: 500;
+        }
+
+        /* Technology Section - Exploded View */
+        .technology {
+            background: #0a0a0a;
+        }
+
+        .exploded-view {
+            max-width: 320px;
+            margin: 0 auto 48px;
+            padding: 40px;
+            background: linear-gradient(145deg, rgba(25, 25, 25, 0.8), rgba(15, 15, 15, 0.8));
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            position: relative;
+        }
+
+        .exploded-layer {
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .exploded-layer:last-child {
+            border-bottom: none;
+        }
+
+        .exploded-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.1));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 16px;
+        }
+
+        .exploded-info h3 {
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .exploded-info p {
+            font-size: 12px;
+            color: #5a5a5a;
+        }
+
+        /* Precision Temp Section */
+        .precision {
+            background: linear-gradient(180deg, #0a0a0a 0%, #121212 100%);
+        }
+
+        .temp-display {
+            max-width: 300px;
+            margin: 0 auto 48px;
+            padding: 40px;
+            background: linear-gradient(145deg, rgba(25, 25, 25, 0.9), rgba(15, 15, 15, 0.9));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+        }
+
+        .temp-value {
+            font-size: 56px;
+            font-weight: 300;
+            font-family: "Didot", "Times New Roman", serif;
+            background: linear-gradient(135deg, #D4AF37, #F4D03F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+        }
+
+        .temp-unit {
+            font-size: 24px;
+            color: #6a6a6a;
+            vertical-align: top;
+        }
+
+        .temp-label {
+            font-size: 12px;
+            color: #5a5a5a;
+            letter-spacing: 2px;
+            margin-top: 16px;
+            text-transform: uppercase;
+        }
+
+        .temp-range {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .temp-range-item {
+            text-align: center;
+        }
+
+        .temp-range-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .temp-range-value {
+            font-size: 16px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .temp-range-label {
+            font-size: 11px;
+            color: #5a5a5a;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        .skincare-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .skincare-item {
+            text-align: center;
+            padding: 24px 16px;
+            background: linear-gradient(145deg, rgba(25, 25, 25, 0.6), rgba(15, 15, 15, 0.6));
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .skincare-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .skincare-name {
+            font-size: 12px;
+            color: #8a8a8a;
+            letter-spacing: 1px;
+        }
+
+        /* Craftsmanship Section */
+        .craftsmanship {
+            background: #0f0f0f;
+        }
+
+        .material-showcase {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 340px;
+            margin: 0 auto;
+        }
+
+        .material-card {
+            aspect-ratio: 1;
+            background: linear-gradient(145deg, rgba(25, 25, 25, 0.8), rgba(15, 15, 15, 0.8));
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .material-sample {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 16px;
+            border-radius: 4px;
+        }
+
+        .sample-piano {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .sample-brushed {
+            background: linear-gradient(145deg, #c9a84d, #b8962e);
+        }
+
+        .sample-brass {
+            background: linear-gradient(145deg, #b8863b, #9a6d2e);
+        }
+
+        .sample-glass {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .material-name {
+            font-size: 12px;
+            color: #8a8a8a;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .material-desc {
+            font-size: 11px;
+            color: #4a4a4a;
+        }
+
+        /* Quiet Section */
+        .quiet {
+            background: linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%);
+            text-align: center;
+        }
+
+        .quiet-value {
+            font-size: 80px;
+            font-weight: 200;
+            font-family: "Didot", "Times New Roman", serif;
+            color: #ffffff;
+            line-height: 1;
+            letter-spacing: -4px;
+            margin-bottom: 16px;
+        }
+
+        .quiet-value span {
+            font-size: 24px;
+            color: #D4AF37;
+        }
+
+        .quiet-label {
+            font-size: 14px;
+            color: #6a6a6a;
+            letter-spacing: 2px;
+            margin-bottom: 48px;
+            text-transform: uppercase;
+        }
+
+        .quiet-demo {
+            max-width: 320px;
+            margin: 0 auto;
+            padding: 32px;
+            background: linear-gradient(145deg, rgba(25, 25, 25, 0.6), rgba(15, 15, 15, 0.6));
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .quiet-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .quiet-icon {
+            font-size: 40px;
+        }
+
+        .quiet-bar {
+            flex: 1;
+            height: 4px;
+            background: rgba(212, 175, 55, 0.15);
+            position: relative;
+        }
+
+        .quiet-bar-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 28%;
+            background: linear-gradient(90deg, #D4AF37, #F4D03F);
+        }
+
+        .quiet-compare {
+            text-align: left;
+            font-size: 11px;
+            color: #5a5a5a;
+            letter-spacing: 0.5px;
+        }
+
+        .quiet-compare p {
+            margin-bottom: 8px;
+        }
+
+        /* B2B Custom Section */
+        .custom {
+            background: linear-gradient(180deg, #0f0f0f 0%, #121212 100%);
+        }
+
+        .custom-showcase {
+            max-width: 340px;
+            margin: 0 auto;
+        }
+
+        .custom-card {
+            background: linear-gradient(145deg, rgba(25, 25, 25, 0.8), rgba(15, 15, 15, 0.8));
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 40px 32px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .custom-preview {
+            width: 180px;
+            height: 120px;
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            margin: 0 auto 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+        }
+
+        .custom-logo-placeholder {
+            font-size: 24px;
+            color: #D4AF37;
+            letter-spacing: 4px;
+            font-family: "Didot", "Times New Roman", serif;
+        }
+
+        .custom-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .custom-desc {
+            font-size: 13px;
+            color: #6a6a6a;
+            line-height: 1.8;
+        }
+
+        .custom-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .custom-option {
+            padding: 20px;
+            background: linear-gradient(145deg, rgba(25, 25, 25, 0.6), rgba(15, 15, 15, 0.6));
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            text-align: center;
+        }
+
+        .custom-option-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .custom-option-name {
+            font-size: 12px;
+            color: #8a8a8a;
+            letter-spacing: 1px;
+        }
+
+        /* Specs Section */
+        .specs {
+            background: #0a0a0a;
+        }
+
+        .specs-table {
+            max-width: 340px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, rgba(25, 25, 25, 0.8), rgba(15, 15, 15, 0.8));
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .spec-row {
+            display: flex;
+            padding: 18px 24px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+        }
+
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+
+        .spec-name {
+            width: 100px;
+            color: #5a5a5a;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        .spec-value {
+            flex: 1;
+            font-size: 14px;
+            color: #ffffff;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-align: right;
+        }
+
+        /* Footer */
+        .footer {
+            background: #050505;
+            padding: 72px 24px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 400;
+            letter-spacing: 6px;
+            color: #D4AF37;
+            margin-bottom: 16px;
+            font-family: "Didot", "Times New Roman", serif;
+        }
+
+        .footer-slogan {
+            font-size: 12px;
+            color: #5a5a5a;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .footer-contact {
+            display: inline-block;
+            padding: 24px 40px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .footer-contact-title {
+            font-size: 11px;
+            color: #D4AF37;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .footer-contact-item {
+            font-size: 13px;
+            color: #8a8a8a;
+            margin-bottom: 8px;
+        }
+
+        .footer-warranty {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(212, 175, 55, 0.08);
+        }
+
+        .footer-warranty-text {
+            font-size: 12px;
+            color: #5a5a5a;
+            letter-spacing: 1px;
+            line-height: 2;
+        }
+
+        .footer-warranty-highlight {
+            color: #D4AF37;
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- 01. Hero Banner - 极静奢华 -->
+        <section class="hero">
+            <div class="hero-border"></div>
+            <div class="hero-corner tl"></div>
+            <div class="hero-corner tr"></div>
+            <div class="hero-corner bl"></div>
+            <div class="hero-corner br"></div>
+
+            <span class="b2b-badge">B2B Premium Custom</span>
+            <div class="hero-logo">NINGBO ICEBERG</div>
+
+            <div class="hero-product">
+                <span>PRODUCT VIEW</span>
+            </div>
+
+            <h1>极静奢华 · 精准呵护</h1>
+            <p class="hero-subtitle">Ultimate Quiet Luxury, Precise Protection</p>
+
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <div class="hero-feature-value">28dB</div>
+                    <div class="hero-feature-label">Ultra Quiet</div>
+                </div>
+                <div class="hero-feature">
+                    <div class="hero-feature-value">50 年</div>
+                    <div class="hero-feature-label">Brand Heritage</div>
+                </div>
+                <div class="hero-feature">
+                    <div class="hero-feature-value">100%</div>
+                    <div class="hero-feature-label">Customizable</div>
+                </div>
+            </div>
+
+            <div class="scroll-indicator"></div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- 02. Scene - 无声融合 -->
+        <section class="scene section">
+            <div class="section-header">
+                <p class="section-label">SCENE</p>
+                <h2 class="section-title">无声融合</h2>
+                <p class="section-title-en">Silent Fusion of Art and Tech</p>
+            </div>
+
+            <div class="scene-content">
+                <div class="scene-image">
+                    <span>高端卧室场景图</span>
+                </div>
+                <p class="scene-text">
+                    <strong>不仅是电器，更是空间的艺术品</strong><br>
+                    在每一个宁静夜晚，感受无震动的纯粹陪伴。<br>
+                    哑光黑与黄铜金的经典碰撞，完美融入高端酒店、<br>
+                    私人影音室、奢华卧室床头。
+                </p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- 03. Technology - 半导体精密制冷 -->
+        <section class="technology section">
+            <div class="section-header">
+                <p class="section-label">TECHNOLOGY</p>
+                <h2 class="section-title">半导体精密制冷</h2>
+                <p class="section-title-en">Revolutionary Peltier Cooling</p>
+            </div>
+
+            <div class="exploded-view">
+                <div class="exploded-layer">
+                    <div class="exploded-icon">🔲</div>
+                    <div class="exploded-info">
+                        <h3>半导体制冷片</h3>
+                        <p>Peltier 效应 · 无压缩机设计</p>
+                    </div>
+                </div>
+                <div class="exploded-layer">
+                    <div class="exploded-icon">⚙️</div>
+                    <div class="exploded-info">
+                        <h3>高效散热风扇</h3>
+                        <p>静音涡轮 · 快速排热</p>
+                    </div>
+                </div>
+                <div class="exploded-layer">
+                    <div class="exploded-icon">🧠</div>
+                    <div class="exploded-info">
+                        <h3>智能温控主板</h3>
+                        <p>±0.5°C 精准控制</p>
+                    </div>
+                </div>
+                <div class="exploded-layer">
+                    <div class="exploded-icon">🛡️</div>
+                    <div class="exploded-info">
+                        <h3>航空铝内胆</h3>
+                        <p>抗菌涂层 · 易清洁</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="text-align: center; font-size: 14px; color: #6a6a6a; line-height: 2;">
+                革新半导体制冷技术，致敬极简精密<br>
+                高效 · 无压缩机 · 无震动 · 长寿命
+            </p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- 04. Precision - 精准温控 -->
+        <section class="precision section">
+            <div class="section-header">
+                <p class="section-label">PRECISION</p>
+                <h2 class="section-title">精准温控</h2>
+                <p class="section-title-en">Precision Temperature Control</p>
+            </div>
+
+            <div class="temp-display">
+                <div class="temp-value">12.5<span class="temp-unit">°C</span></div>
+                <p class="temp-label">Golden Skincare Zone</p>
+
+                <div class="temp-range">
+                    <div class="temp-range-item">
+                        <div class="temp-range-icon">❄️</div>
+                        <div class="temp-range-value">15-20°C</div>
+                        <div class="temp-range-label">制冷模式</div>
+                    </div>
+                    <div class="temp-range-item">
+                        <div class="temp-range-icon">🔥</div>
+                        <div class="temp-range-value">50-65°C</div>
+                        <div class="temp-range-label">制热模式</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skincare-grid">
+                <div class="skincare-item">
+                    <div class="skincare-icon">🧴</div>
+                    <div class="skincare-name">精华</div>
+                </div>
+                <div class="skincare-item">
+                    <div class="skincare-icon">🎭</div>
+                    <div class="skincare-name">面膜</div>
+                </div>
+                <div class="skincare-item">
+                    <div class="skincare-icon">💄</div>
+                    <div class="skincare-name">化妆品</div>
+                </div>
+            </div>
+
+            <p style="text-align: center; font-size: 13px; color: #6a6a6a; margin-top: 32px; line-height: 2;">
+                <strong style="color: #D4AF37;">12.5°C 黄金温区</strong><br>
+                精准温控，让护肤品活性完美锁住<br>
+                为珍贵护肤品提供专业级保护
+            </p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- 05. Craftsmanship - 匠心质感 -->
+        <section class="craftsmanship section">
+            <div class="section-header">
+                <p class="section-label">CRAFTSMANSHIP</p>
+                <h2 class="section-title">匠心质感</h2>
+                <p class="section-title-en">Craftsmanship Texture</p>
+            </div>
+
+            <div class="material-showcase">
+                <div class="material-card">
+                    <div class="material-sample sample-piano"></div>
+                    <div class="material-name">钢琴烤漆</div>
+                    <div class="material-desc">高光镜面</div>
+                </div>
+                <div class="material-card">
+                    <div class="material-sample sample-brushed"></div>
+                    <div class="material-name">拉丝金属</div>
+                    <div class="material-desc">铝合金边框</div>
+                </div>
+                <div class="material-card">
+                    <div class="material-sample sample-brass"></div>
+                    <div class="material-name">黄铜旋钮</div>
+                    <div class="material-desc">复古质感</div>
+                </div>
+                <div class="material-card">
+                    <div class="material-sample sample-glass"></div>
+                    <div class="material-name">钢化玻璃</div>
+                    <div class="material-desc">内部隔板</div>
+                </div>
+            </div>
+
+            <p style="text-align: center; font-size: 13px; color: #6a6a6a; margin-top: 40px; line-height: 2;">
+                每一 micron 都是奢华<br>
+                提供品牌 Logo 定制服务 · 专属企业标识
+            </p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- 06. Quiet - 隐于无声 -->
+        <section class="quiet section">
+            <div class="section-header">
+                <p class="section-label">QUIET</p>
+                <h2 class="section-title">隐于无声</h2>
+                <p class="section-title-en">Hidden in Silence</p>
+            </div>
+
+            <div class="quiet-value">28<span>dB</span></div>
+            <p class="quiet-label">图书馆级静音 · 无震动设计</p>
+
+            <div class="quiet-demo">
+                <div class="quiet-visual">
+                    <span class="quiet-icon">🪶</span>
+                    <div class="quiet-bar">
+                        <div class="quiet-bar-fill"></div>
+                    </div>
+                </div>
+                <div class="quiet-compare">
+                    <p>落叶 · 20dB</p>
+                    <p><strong style="color: #D4AF37;">本产品 · 28dB</strong></p>
+                    <p>图书馆 · 30dB</p>
+                    <p>耳语 · 40dB</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; font-size: 14px; color: #6a6a6a; margin-top: 40px; line-height: 2;">
+                静音与无震动，是我们对奢华的承诺<br>
+                小巧机身完美融入您的任何空间
+            </p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- 07. B2B Custom - 专属定制 -->
+        <section class="custom section">
+            <div class="section-header">
+                <p class="section-label">B2B CUSTOM</p>
+                <h2 class="section-title">专属定制</h2>
+                <p class="section-title-en">Customized for Distinction</p>
+            </div>
+
+            <div class="custom-showcase">
+                <div class="custom-card">
+                    <div class="custom-preview">
+                        <span class="custom-logo-placeholder">LOGO</span>
+                    </div>
+                    <h3 class="custom-title">品牌 Logo 定制</h3>
+                    <p class="custom-desc">
+                        为您的品牌量身打造 · 企业专属标识<br>
+                        激光雕刻 · 丝网印刷 · 金属铭牌
+                    </p>
+                </div>
+
+                <div class="custom-options">
+                    <div class="custom-option">
+                        <div class="custom-option-icon">🎨</div>
+                        <div class="custom-option-name">色彩定制</div>
+                    </div>
+                    <div class="custom-option">
+                        <div class="custom-option-icon">📦</div>
+                        <div class="custom-option-name">礼盒包装</div>
+                    </div>
+                    <div class="custom-option">
+                        <div class="custom-option-icon">🔧</div>
+                        <div class="custom-option-name">规格调整</div>
+                    </div>
+                    <div class="custom-option">
+                        <div class="custom-option-icon">🏷️</div>
+                        <div class="custom-option-name">标签设计</div>
+                    </div>
+                </div>
+            </div>
+
+            <p style="text-align: center; font-size: 13px; color: #6a6a6a; margin-top: 40px; line-height: 2;">
+                <strong style="color: #D4AF37;">为您的品牌赋予独特身份</strong><br>
+                商务馈赠的尊贵之选 · 企业礼品的顶级配置
+            </p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- 08. Specs - 规格参数 -->
+        <section class="specs section">
+            <div class="section-header">
+                <p class="section-label">SPECIFICATIONS</p>
+                <h2 class="section-title">规格参数</h2>
+                <p class="section-title-en">Technical Specifications</p>
+            </div>
+
+            <div class="specs-table">
+                <div class="spec-row">
+                    <span class="spec-name">制冷温度</span>
+                    <span class="spec-value">15-20°C</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">制热温度</span>
+                    <span class="spec-value">50-65°C</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">额定功率</span>
+                    <span class="spec-value">45W</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">额定电压</span>
+                    <span class="spec-value">DC 12V / AC 220V</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">运行噪音</span>
+                    <span class="spec-value">≤28dB</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">产品净重</span>
+                    <span class="spec-value">约 1.5kg</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">容量选项</span>
+                    <span class="spec-value">4L / 6L</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-name">定制服务</span>
+                    <span class="spec-value">支持 Logo/包装</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-logo">NINGBO ICEBERG</div>
+            <p class="footer-slogan">Premium Temperature Control Since 1974</p>
+
+            <div class="footer-contact">
+                <p class="footer-contact-title">B2B Inquiry</p>
+                <p class="footer-contact-item">business@iceberg.com.cn</p>
+                <p class="footer-contact-item">+86 574 XXXX XXXX</p>
+                <p class="footer-contact-item">www.iceberg.com.cn</p>
+            </div>
+
+            <div class="footer-warranty">
+                <p class="footer-warranty-text">
+                    <span class="footer-warranty-highlight">一年质保</span> · 品质保证<br>
+                    <span class="footer-warranty-highlight">B2B 专属服务</span> · 支持定制
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
