@@ -196,6 +196,59 @@
             text-transform: uppercase;
         }
 
+        /* 交互动画模式 */
+        body.mode-cold .hero::before {
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(0, 122, 255, 0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 30% 70%, rgba(0, 122, 255, 0.08) 0%, transparent 50%);
+        }
+
+        body.mode-heat .hero::before {
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(255, 107, 53, 0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 30% 70%, rgba(255, 107, 53, 0.08) 0%, transparent 50%);
+        }
+
+        .temp-mode-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 24px;
+            font-size: 13px;
+            color: #8a8a8a;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin: 8px;
+        }
+
+        .temp-mode-btn:hover,
+        .temp-mode-btn.active {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: #D4AF37;
+            color: #D4AF37;
+        }
+
+        .temp-mode-btn.cold:hover,
+        .temp-mode-btn.cold.active {
+            background: rgba(0, 122, 255, 0.15);
+            border-color: #007AFF;
+            color: #007AFF;
+        }
+
+        .temp-mode-btn.heat:hover,
+        .temp-mode-btn.heat.active {
+            background: rgba(255, 107, 53, 0.15);
+            border-color: #FF6B35;
+            color: #FF6B35;
+        }
+
+        .temp-mode-transition {
+            transition: background 0.6s ease;
+        }
+
         .scroll-indicator {
             position: absolute;
             bottom: 40px;
@@ -706,6 +759,84 @@
             border-top: 1px solid rgba(212, 175, 55, 0.1);
         }
 
+        /* 证书认证 */
+        .certifications {
+            background: linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%);
+            padding: 60px 24px;
+        }
+
+        .cert-grid {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            max-width: 340px;
+            margin: 0 auto;
+        }
+
+        .cert-item {
+            text-align: center;
+        }
+
+        .cert-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 12px;
+            background: linear-gradient(145deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.08));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .cert-name {
+            font-size: 11px;
+            color: #5a5a5a;
+            letter-spacing: 1px;
+        }
+
+        /* 用户评价 */
+        .testimonials {
+            background: linear-gradient(180deg, #0f0f0f 0%, #121212 100%);
+            padding: 80px 24px;
+        }
+
+        .testimonial-card {
+            max-width: 340px;
+            margin: 0 auto 24px;
+            padding: 32px;
+            background: linear-gradient(145deg, rgba(25, 25, 25, 0.8), rgba(15, 15, 15, 0.8));
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+        }
+
+        .testimonial-rating {
+            font-size: 18px;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .testimonial-text {
+            font-size: 14px;
+            color: #8a8a8a;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-size: 12px;
+            color: #D4AF37;
+            letter-spacing: 1px;
+        }
+
+        .testimonial-role {
+            font-size: 11px;
+            color: #4a4a4a;
+            margin-top: 4px;
+        }
+
         .footer-logo {
             font-size: 28px;
             font-weight: 400;
@@ -788,7 +919,7 @@
                     <div class="hero-feature-label">Ultra Quiet</div>
                 </div>
                 <div class="hero-feature">
-                    <div class="hero-feature-value">±0.5°C</div>
+                    <div class="hero-feature-value">±1°C</div>
                     <div class="hero-feature-label">Precision Control</div>
                 </div>
                 <div class="hero-feature">
@@ -852,7 +983,7 @@
                     <div class="exploded-icon">🧠</div>
                     <div class="exploded-info">
                         <h3>智能温控主板</h3>
-                        <p>±0.5°C 精准控制</p>
+                        <p>±1°C 精准控制</p>
                     </div>
                 </div>
                 <div class="exploded-layer">
@@ -888,13 +1019,22 @@
                     <div class="temp-range-item">
                         <div class="temp-range-icon">❄️</div>
                         <div class="temp-range-value">15-20°C</div>
-                        <div class="temp-range-label">制冷模式</div>
+                        <div class="temp-range-label">制冷 (低于环境 20°C)</div>
                     </div>
                     <div class="temp-range-item">
                         <div class="temp-range-icon">🔥</div>
                         <div class="temp-range-value">50-65°C</div>
                         <div class="temp-range-label">制热模式</div>
                     </div>
+                </div>
+
+                <div style="margin-top: 32px;">
+                    <button class="temp-mode-btn cold active" onclick="setTempMode('cold')">
+                        ❄️ 制冷
+                    </button>
+                    <button class="temp-mode-btn heat" onclick="setTempMode('heat')">
+                        🔥 制热
+                    </button>
                 </div>
             </div>
 
@@ -1057,6 +1197,10 @@
                     <span class="spec-value">15-20°C</span>
                 </div>
                 <div class="spec-row">
+                    <span class="spec-name">温度说明</span>
+                    <span class="spec-value">低于环境 20°C</span>
+                </div>
+                <div class="spec-row">
                     <span class="spec-name">制热温度</span>
                     <span class="spec-value">50-65°C</span>
                 </div>
@@ -1089,6 +1233,61 @@
 
         <div class="divider"></div>
 
+        <!-- 09. Certifications - 权威认证 -->
+        <section class="certifications section">
+            <div class="section-header">
+                <p class="section-label">CERTIFICATIONS</p>
+                <h2 class="section-title">权威认证</h2>
+                <p class="section-title-en">Global Compliance</p>
+            </div>
+
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <div class="cert-icon">3C</div>
+                    <div class="cert-name">3C 认证</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon">CE</div>
+                    <div class="cert-name">CE 认证</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon">RoHS</div>
+                    <div class="cert-name">RoHS</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- 10. Testimonials - 媒体推荐 -->
+        <section class="testimonials section">
+            <div class="section-header">
+                <p class="section-label">TESTIMONIALS</p>
+                <h2 class="section-title">媒体推荐</h2>
+                <p class="section-title-en">Press & Reviews</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text">
+                    "这款半导体制冷冰箱重新定义了高端酒店用品的标准。静音、精准、奢华，三者完美融合。"
+                </p>
+                <p class="testimonial-author">高端酒店用品评测</p>
+                <p class="testimonial-role">Hospitality Magazine</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text">
+                    "为 VIP 客户提供了一份独特的关怀。定制 Logo 后，成为商务馈赠的首选。"
+                </p>
+                <p class="testimonial-author">某五星级酒店采购总监</p>
+                <p class="testimonial-role">行业用户反馈</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
         <!-- Footer -->
         <footer class="footer">
             <div class="footer-logo">NINGBO ICEBERG</div>
@@ -1109,5 +1308,23 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        function setTempMode(mode) {
+            // 更新按钮状态
+            document.querySelectorAll('.temp-mode-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector('.temp-mode-btn.' + mode).classList.add('active');
+
+            // 更新背景模式
+            document.body.classList.remove('mode-cold', 'mode-heat');
+            if (mode === 'cold') {
+                document.body.classList.add('mode-cold');
+            } else if (mode === 'heat') {
+                document.body.classList.add('mode-heat');
+            }
+        }
+    </script>
 </body>
 </html>
